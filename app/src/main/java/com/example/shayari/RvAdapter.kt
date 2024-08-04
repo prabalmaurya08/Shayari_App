@@ -1,14 +1,12 @@
 package com.example.shayari
 
-import DataEntity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shayari.databinding.RvItemBinding
-import java.util.ArrayList
 
-class RvAdapter(var context:Context, var shayariList:ArrayList<DataEntity>):
+class RvAdapter(var context:Context, var shayariList:List<DataEntity>):
     RecyclerView.Adapter<RvAdapter.ViewHolder>() {
 
 

@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shayari"
         tools:targetApi="31">
-        <activity
-            android:name=".AddEditActivity"
-            android:exported="false"
-            android:label="@string/title_activity_add_edit"
-            android:theme="@style/Theme.Shayari.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

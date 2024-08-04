@@ -1,6 +1,5 @@
 package com.example.shayari
 
-import DataEntity
 import java.util.ArrayList
 import java.util.Calendar
 import java.util.Date
