@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.fab.setOnClickListener {
-            var l:ConstrainT
+
             val fragmentManager = supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.frame_container, AddEditFragment())
