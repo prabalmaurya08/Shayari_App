@@ -1,5 +1,6 @@
 package com.example.shayari
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -24,8 +25,8 @@ interface ShayariDao {
    suspend fun update(shayari: DataEntity){
 
     }
-    @Query("SELECT * FROM shayari_table ORDER BY date DESC")
-    fun getAllShayari():List<DataEntity>
+    @Query("SELECT * FROM shayari_table ")
+    fun getAllShayari():LiveData<List<DataEntity>>
 
     //we can use Flow that changes on runtime
 

@@ -8,10 +8,7 @@ import java.util.Date
 @Entity(tableName = "shayari_table")
 data class DataEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var id :Int,
-    @ColumnInfo(name = "shayari")
-    var shayari:String,
-    @ColumnInfo(name = "date")
-    var date:Date
+    val id: Int= 0,
+    @ColumnInfo(name = "shayari_text")
+    val shayari: String
 )

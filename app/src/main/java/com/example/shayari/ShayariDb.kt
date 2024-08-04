@@ -4,35 +4,44 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-
-
-import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [DataEntity::class],
-version = 1,
-exportSchema = false
+    version = 1,
+    exportSchema = false
 )
-@TypeConverters(DateConverter::class)
-abstract class ShayariDb:RoomDatabase() {
-    //provide access to DAO classes
+abstract class ShayariDb : RoomDatabase() {
+
     abstract fun shayariDao(): ShayariDao
 
-    //make a instance that will help to create the database
-
-
     companion object {
+        @Volatile
         private var INSTANCE: ShayariDb? = null
-        public fun getShayari(context:Context):ShayariDb{
-            if(INSTANCE!=null){
 
-                synchronized(this){
-                    INSTANCE= Room.databaseBuilder(context.applicationContext,ShayariDb::class.java,"shayari_db").build()
+        fun getInstance(context: Context): ShayariDb? {
+            if (INSTANCE == null) {
+                synchronized(ShayariDb::class.java) {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(
+                            context.applicationContext,
+                            ShayariDb::class.java,
+                            "shayari_database"
+                        )
 
+                            .build()
+                    }
                 }
-
             }
-            return INSTANCE!!
+            return INSTANCE
         }
+
+//        private val MIGRATION_1_2 = object : Migration(1, 2) {
+//            override fun migrate(database: SupportSQLiteDatabase) {
+//                // Migration logic here
+//                database.execSQL("ALTER TABLE shayari_table ADD COLUMN new_column TEXT")
+//            }
+//        }
     }
 }

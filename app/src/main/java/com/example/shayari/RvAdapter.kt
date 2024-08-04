@@ -1,12 +1,13 @@
 package com.example.shayari
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shayari.databinding.RvItemBinding
 
-class RvAdapter(var context:Context, var shayariList:List<DataEntity>):
+class RvAdapter(private var context:Context, private var shayariList:List<DataEntity>):
     RecyclerView.Adapter<RvAdapter.ViewHolder>() {
 
 
@@ -14,6 +15,12 @@ class RvAdapter(var context:Context, var shayariList:List<DataEntity>):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = RvItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(binding)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addShayari(shayariList: List<DataEntity>){
+        this.shayariList=shayariList
+        notifyDataSetChanged()
     }
 
 
